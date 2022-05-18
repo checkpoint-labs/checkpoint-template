@@ -1,0 +1,13 @@
+scalar Text
+
+type Post {
+  id: String!
+  poster: String!
+  content: Text!
+  tag: String
+  created_at: Int!
+}
+
+type Poster {
+  id: String!
+}

@@ -1,6 +1,6 @@
 # Checkpoint Starter Template
 
-This is a template to quickly get started to use [Checkpoint](https://www.npmjs.com/package/@snapshot-labs/checkpoint)
+This is a template to quickly get started to use [Checkpoint](https://docs.checkpoint.fyi)
 to expose a GraphQL API to query data from your StarkNet contracts.
 
 ## Getting Started
