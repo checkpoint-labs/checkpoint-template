@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Writers handleNewPost should create posts correctly 1`] = `
+Array [
+  Array [
+    "INSERT IGNORE INTO posts SET ?",
+    Array [
+      Object {
+        "author": [MockFunction],
+        "content": "",
+        "created_at": 1652650963200,
+        "created_at_block": [MockFunction],
+        "id": "undefined/undefined",
+        "tag": null,
+        "tx_hash": [MockFunction],
+      },
+    ],
+  ],
+]
+`;

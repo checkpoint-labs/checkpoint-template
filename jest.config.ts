@@ -10,11 +10,11 @@ export default {
   coverageProvider: 'v8',
 
   // An array of regexp pattern strings used to skip coverage collection
-  coveragePathIgnorePatterns: ['/node_modules/', '<rootDir>/dist/', '<rootDir>/test/fixtures/'],
+  coveragePathIgnorePatterns: ['/node_modules/', '<rootDir>/dist/'],
 
   preset: 'ts-jest',
   testEnvironment: 'node',
   setupFiles: ['dotenv/config'],
-  //setupFilesAfterEnv: ['<rootDir>src/setupTests.ts'],
+  testPathIgnorePatterns: ['/node_modules/', '<rootDir>/dist/'],
   moduleFileExtensions: ['js', 'ts']
 };
