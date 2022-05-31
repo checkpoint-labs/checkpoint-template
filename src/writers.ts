@@ -1,6 +1,5 @@
-import { shortStringArrToStr } from '@snapshot-labs/sx';
 import { CheckpointWriters } from '@snapshot-labs/checkpoint';
-import { toAddress } from './utils';
+import { hexStrArrToStr, toAddress } from './utils';
 
 export const writers: CheckpointWriters = {
   handleDeploy: async () => {
@@ -10,15 +9,25 @@ export const writers: CheckpointWriters = {
   handleNewPost: async ({ receipt, block, mysql }) => {
     const event = receipt.events[0] as any;
     const author = toAddress(event.data[0]);
-    console.log(receipt);
     let content = '';
+    let tag = '';
+    const contentLength = BigInt(event.data[1]);
+    const tagLength = BigInt(event.data[2 + Number(contentLength)]);
+
+    // parse content bytes
     try {
-      const contentLength = BigInt(event.data[1]);
-      const contentArr = event.data.slice(2, 2 + Number(contentLength));
-      console.log(contentArr);
-      content = shortStringArrToStr(contentArr.map(m => BigInt(m)));
+      content = hexStrArrToStr(event.data, 2, contentLength);
     } catch (e) {
-      console.error(e);
+      console.error(`failed to decode content on block [${(block as any).block_number}]: ${e}`);
+      return;
+    }
+
+    // parse tag bytes
+    try {
+      tag = hexStrArrToStr(event.data, 3 + Number(contentLength), tagLength);
+    } catch (e) {
+      console.error(`failed to decode tag on block [${(block as any).block_number}]: ${e}`);
+      return;
     }
 
     // post object matches fields of Post type in schema.gql
@@ -26,13 +35,11 @@ export const writers: CheckpointWriters = {
       id: `${author}/${event.keys[0]}`,
       author,
       content,
-      tag: null,
+      tag,
       tx_hash: receipt.transaction_hash,
       created_at: (block as any).timestamp,
       created_at_block: receipt.block_number
     };
-
-    console.log('Found post', receipt.events, content);
 
     // table names are `lowercase(TypeName)s` and can be interacted with sql
     await mysql.queryAsync('INSERT IGNORE INTO posts SET ?', [post]);
