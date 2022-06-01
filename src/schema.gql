@@ -1,0 +1,11 @@
+scalar Text
+
+type Post {
+  id: String!
+  author: String!
+  content: Text!
+  tag: String
+  tx_hash: String!
+  created_at: Int!
+  created_at_block: Int!
+}

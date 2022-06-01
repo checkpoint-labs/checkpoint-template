@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Writers handleNewPost should create posts correctly 1`] = `
+Array [
+  Array [
+    "INSERT IGNORE INTO posts SET ?",
+    Array [
+      Object {
+        "author": "0x0",
+        "content": "This is a random post with a random number: 951",
+        "created_at": 1652650963200,
+        "created_at_block": 500,
+        "id": "0x0/0x5fa53789e3fc35c9dd40914e664d8508023289bdf986ebe30a540698fbeb026",
+        "tag": "private",
+        "tx_hash": "0x5fa53789e3fc35c9dd40914e664d8508023289bdf986ebe30a540698fbeb026",
+      },
+    ],
+  ],
+]
+`;
