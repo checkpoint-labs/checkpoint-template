@@ -13,12 +13,14 @@ export const writers: CheckpointWriters = {
     let tag = '';
     const contentLength = BigInt(event.data[1]);
     const tagLength = BigInt(event.data[2 + Number(contentLength)]);
+    const timestamp = (block as any).timestamp;
+    const blockNumber = (block as any).block_number;
 
     // parse content bytes
     try {
       content = hexStrArrToStr(event.data, 2, contentLength);
     } catch (e) {
-      console.error(`failed to decode content on block [${(block as any).block_number}]: ${e}`);
+      console.error(`failed to decode content on block [${blockNumber}]: ${e}`);
       return;
     }
 
@@ -26,21 +28,19 @@ export const writers: CheckpointWriters = {
     try {
       tag = hexStrArrToStr(event.data, 3 + Number(contentLength), tagLength);
     } catch (e) {
-      console.error(`failed to decode tag on block [${(block as any).block_number}]: ${e}`);
+      console.error(`failed to decode tag on block [${blockNumber}]: ${e}`);
       return;
     }
 
-    const timestamp = (block as any).timestamp;
-
     // post object matches fields of Post type in schema.gql
     const post = {
-      id: `${author}/${event.keys[0]}/${timestamp}`,
+      id: `${author}/${receipt.transaction_hash}`,
       author,
       content,
       tag,
       tx_hash: receipt.transaction_hash,
       created_at: timestamp,
-      created_at_block: receipt.block_number
+      created_at_block: blockNumber
     };
 
     // table names are `lowercase(TypeName)s` and can be interacted with sql

@@ -12,9 +12,8 @@ describe('Writers', () => {
       };
       const tx = mockDeep<Transaction>();
       const source = mockDeep<ContractSourceConfig>();
-      const receipt = mockDeep<TransactionReceipt>({
+      const receipt = {
         events: [
-          //@ts-ignore
           {
             from_address: '0x521f830ce263a6f0969f914d34e7001bc953c65ff04f316a9d2923eae145967',
             keys: ['0x8fee3afaa1e95194c589c2c7ff049f7667a0ddad86dd1e5172aa5d2053ca88'],
@@ -27,15 +26,16 @@ describe('Writers', () => {
               '0x70726976617465'
             ]
           }
-        ]
-      });
+        ],
+        transaction_hash: '0x5fa53789e3fc35c9dd40914e664d8508023289bdf986ebe30a540698fbeb026'
+      };
       const mockMysql = mockDeep<AsyncMySqlPool>();
 
       await writers.handleNewPost({
         tx,
         source,
         block: block as unknown as number,
-        receipt,
+        receipt: receipt as unknown as TransactionReceipt,
         mysql: mockMysql
       });
 
