@@ -6,12 +6,12 @@ Array [
     "INSERT IGNORE INTO posts SET ?",
     Array [
       Object {
-        "author": [MockFunction],
-        "content": "",
+        "author": "0x0",
+        "content": "This is a random post with a random number: 951",
         "created_at": 1652650963200,
         "created_at_block": [MockFunction],
-        "id": "undefined/undefined",
-        "tag": null,
+        "id": "0x0/0x8fee3afaa1e95194c589c2c7ff049f7667a0ddad86dd1e5172aa5d2053ca88/1652650963200",
+        "tag": "private",
         "tx_hash": [MockFunction],
       },
     ],

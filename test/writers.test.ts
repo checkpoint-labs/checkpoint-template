@@ -7,11 +7,28 @@ describe('Writers', () => {
   describe('handleNewPost', () => {
     it('should create posts correctly', async () => {
       const block = {
-        timestamp: 1652650963200
+        timestamp: 1652650963200,
+        block_number: 500
       };
       const tx = mockDeep<Transaction>();
       const source = mockDeep<ContractSourceConfig>();
-      const receipt = mockDeep<TransactionReceipt>();
+      const receipt = mockDeep<TransactionReceipt>({
+        events: [
+          //@ts-ignore
+          {
+            from_address: '0x521f830ce263a6f0969f914d34e7001bc953c65ff04f316a9d2923eae145967',
+            keys: ['0x8fee3afaa1e95194c589c2c7ff049f7667a0ddad86dd1e5172aa5d2053ca88'],
+            data: [
+              '0x0',
+              '0x2',
+              '0x5468697320697320612072616e646f6d20706f737420776974682061207261',
+              '0x6e646f6d206e756d6265723a20393531',
+              '0x1',
+              '0x70726976617465'
+            ]
+          }
+        ]
+      });
       const mockMysql = mockDeep<AsyncMySqlPool>();
 
       await writers.handleNewPost({
