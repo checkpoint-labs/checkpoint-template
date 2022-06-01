@@ -6,6 +6,11 @@ export const writers: CheckpointWriters = {
     // Run logic as at the time Contract was deployed.
   },
 
+  // This decodes the new_post events data and stores successfully
+  // decoded information in the `posts` table.
+  //
+  // See here for the original logic used to create post transactions:
+  // https://gist.github.com/perfectmak/417a4dab69243c517654195edf100ef9#file-index-ts
   handleNewPost: async ({ receipt, block, mysql }) => {
     const event = receipt.events[0] as any;
     const author = toAddress(event.data[0]);
