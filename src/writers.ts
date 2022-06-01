@@ -30,14 +30,16 @@ export const writers: CheckpointWriters = {
       return;
     }
 
+    const timestamp = (block as any).timestamp;
+
     // post object matches fields of Post type in schema.gql
     const post = {
-      id: `${author}/${event.keys[0]}`,
+      id: `${author}/${event.keys[0]}/${timestamp}`,
       author,
       content,
       tag,
       tx_hash: receipt.transaction_hash,
-      created_at: (block as any).timestamp,
+      created_at: timestamp,
       created_at_block: receipt.block_number
     };
 
