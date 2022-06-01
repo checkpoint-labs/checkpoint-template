@@ -56,10 +56,6 @@ query {
 
 To learn more about the different ways you can query the GraphQL API, visit the Checkpoint documentation [here](https://docs.checkpoint.fyi/core-concepts/entity-schema).
 
-## Exploring the Codebase
-
-> TODO
-
 ## License
 
 MIT
