@@ -5,7 +5,7 @@ import path from 'path';
 import fs from 'fs';
 import Checkpoint, { LogLevel } from '@snapshot-labs/checkpoint';
 import config from './config.json';
-import { writers } from './writers';
+import * as writers from './writers';
 import checkpointBlocks from './checkpoints.json';
 
 const dir = __dirname.endsWith('dist/src') ? '../' : '';

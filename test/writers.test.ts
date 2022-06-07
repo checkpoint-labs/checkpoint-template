@@ -1,15 +1,15 @@
 import { mockDeep } from 'jest-mock-extended';
 import { AsyncMySqlPool, ContractSourceConfig } from '@snapshot-labs/checkpoint';
-import { Transaction, TransactionReceipt } from 'starknet';
-import { writers } from '../src/writers';
+import { Transaction, TransactionReceipt, GetBlockResponse } from 'starknet';
+import { handleNewPost } from '../src/writers';
 
 describe('Writers', () => {
   describe('handleNewPost', () => {
     it('should create posts correctly', async () => {
-      const block = {
+      const block = mockDeep<GetBlockResponse>({
         timestamp: 1652650963200,
         block_number: 500
-      };
+      });
       const tx = mockDeep<Transaction>();
       const source = mockDeep<ContractSourceConfig>();
       const receipt = {
@@ -31,10 +31,10 @@ describe('Writers', () => {
       };
       const mockMysql = mockDeep<AsyncMySqlPool>();
 
-      await writers.handleNewPost({
+      await handleNewPost({
         tx,
         source,
-        block: block as unknown as number,
+        block,
         receipt: receipt as unknown as TransactionReceipt,
         mysql: mockMysql
       });
