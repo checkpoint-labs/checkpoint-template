@@ -1,9 +1,9 @@
-# Checkpoint Starter Template
+# Checkpoint starter template
 
 This is a template to quickly get started to use [Checkpoint](https://docs.checkpoint.fyi)
 to expose a GraphQL API to query data from your StarkNet contracts.
 
-## Getting Started
+## Getting started
 
 This starter project contains logic to index events from a StarkNet Poster contract that is defined in the
 [starknet-poster](https://github.com/snapshot-labs/starknet-poster/blob/master/contracts/Poster.cairo) repository.
@@ -42,15 +42,15 @@ To fetch a list of Post's try the following query:
 
 ```graphql
 query {
-	posts {
-		id
-		author
-		content
-		tag
-		created_at_block
-		created_at
-		tx_hash
-	}
+  posts {
+    id
+    author
+    content
+    tag
+    created_at_block
+    created_at
+    tx_hash
+  }
 }
 ```
 
