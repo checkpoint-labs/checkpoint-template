@@ -13,7 +13,7 @@ link](https://github.com/snapshot-labs/checkpoint-template/generate).
 
 **Requirements**
 
-- Node.js (>= 14.x.x)
+- Node.js (>= 16.x.x)
 - MySQL (v8.0)
 - Yarn
 
