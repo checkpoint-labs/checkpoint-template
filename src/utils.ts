@@ -1,6 +1,6 @@
 import { getAddress } from '@ethersproject/address';
 import { BigNumber } from '@ethersproject/bignumber';
-import { shortStringArrToStr } from '@snapshot-labs/sx';
+import { shortStringArrToStr } from '@snapshot-labs/sx/dist/utils/strings';
 
 export const toAddress = bn => {
   try {
