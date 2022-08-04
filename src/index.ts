@@ -18,6 +18,7 @@ const checkpointOptions = {
 };
 
 // Initialize checkpoint
+// @ts-ignore
 const checkpoint = new Checkpoint(config, writers, schema, checkpointOptions);
 
 // resets the entities already created in the database
