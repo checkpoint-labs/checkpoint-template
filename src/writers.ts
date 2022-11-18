@@ -9,7 +9,7 @@ export async function handleDeploy() {
 //
 // See here for the original logic used to create post transactions:
 // https://gist.github.com/perfectmak/417a4dab69243c517654195edf100ef9#file-index-ts
-export async function handleNewPost({ block, receipt, event, mysql }) {
+export async function handleNewPost({ block, tx, event, mysql }) {
   const author = toAddress(event.data[0]);
   let content = '';
   let tag = '';
@@ -36,11 +36,11 @@ export async function handleNewPost({ block, receipt, event, mysql }) {
 
   // post object matches fields of Post type in schema.gql
   const post = {
-    id: `${author}/${receipt.transaction_hash}`,
+    id: `${author}/${tx.transaction_hash}`,
     author,
     content,
     tag,
-    tx_hash: receipt.transaction_hash,
+    tx_hash: tx.transaction_hash,
     created_at: timestamp,
     created_at_block: blockNumber
   };
