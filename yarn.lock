@@ -1037,10 +1037,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@snapshot-labs/checkpoint@^0.1.0-beta.12":
-  version "0.1.0-beta.12"
-  resolved "https://registry.yarnpkg.com/@snapshot-labs/checkpoint/-/checkpoint-0.1.0-beta.12.tgz#45aef3e6f7b0966b4697c009351618682d769ca6"
-  integrity sha512-J68/bRLz9cgkldwSwcJsVD8dYlQ1BGnEeIWzfeFXuNSH+SKdEAy964P4sZUlTcUdNRvbuOwfrPmNV4zWVOCkBw==
+"@snapshot-labs/checkpoint@^0.1.0-beta.13":
+  version "0.1.0-beta.13"
+  resolved "https://registry.yarnpkg.com/@snapshot-labs/checkpoint/-/checkpoint-0.1.0-beta.13.tgz#bf49d7250a7b6aa44c1fe1df4ddfc662d7a4f3b6"
+  integrity sha512-fBknLzDmptMix60XOvBDpcd2kPbSfN5KTw6hHz1K+MiXpgGd0QEIpfZlMew9HAInf+M+Nrxw9xIibkXI5OWSiA==
   dependencies:
     "@graphql-tools/schema" "^8.5.1"
     bluebird "^3.7.2"
@@ -1055,7 +1055,7 @@
     mysql "^2.18.1"
     pino "^8.3.1"
     pino-pretty "^8.1.0"
-    starknet "^4.12.0"
+    starknet "^4.13.1"
 
 "@snapshot-labs/sx@^0.1.0-beta.13":
   version "0.1.0-beta.13"
@@ -4861,7 +4861,24 @@ stack-utils@^2.0.3:
   dependencies:
     escape-string-regexp "^2.0.0"
 
-starknet@^4.12.0, starknet@^4.4.2:
+starknet@^4.13.1:
+  version "4.13.1"
+  resolved "https://registry.yarnpkg.com/starknet/-/starknet-4.13.1.tgz#ecd4546fff9ad736b2da8ec894a06dfcfee43582"
+  integrity sha512-KrKhBE0/v/NZT7VSdMWHKXPnnB7cYuAeBA/UuIsLOSR5y3FZHCtrm0EfTXgFdDAp2/JZREl3h/lt6BDgkrkGAQ==
+  dependencies:
+    "@ethersproject/bytes" "^5.6.1"
+    bn.js "^5.2.1"
+    elliptic "^6.5.4"
+    ethereum-cryptography "^1.0.3"
+    hash.js "^1.1.7"
+    isomorphic-fetch "^3.0.0"
+    json-bigint "^1.0.0"
+    minimalistic-assert "^1.0.1"
+    pako "^2.0.4"
+    ts-custom-error "^3.2.0"
+    url-join "^4.0.1"
+
+starknet@^4.4.2:
   version "4.12.0"
   resolved "https://registry.yarnpkg.com/starknet/-/starknet-4.12.0.tgz#174e16f0aee2cc7d07f4038e4e250c6db64727c4"
   integrity sha512-ECoz+eRh99tKars7COvm7FZkPfA1ok36+e1FhL+eyn8Q5wcHPCr85Cyu6ZZBaMmE6038Gt6gHuPsGI0skj0jxw==

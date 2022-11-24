@@ -40,7 +40,8 @@ describe('Writers', () => {
         source,
         block,
         event,
-        mysql: mockMysql
+        mysql: mockMysql,
+        instance: null as any
       });
 
       expect(mockMysql.queryAsync.mock.calls).toMatchSnapshot();
