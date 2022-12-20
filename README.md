@@ -14,7 +14,7 @@ link](https://github.com/snapshot-labs/checkpoint-template/generate).
 **Requirements**
 
 - Node.js (>= 16.x.x)
-- MySQL (v8.0)
+- Docker with `docker-compose`
 - Yarn
 
 > You can also use npm, just make sure to replace the subsequent 'yarn' commands with their npm equivalent.
@@ -26,6 +26,11 @@ yarn # or 'npm install'
 ```
 
 Next, you'll need a MySQL server running and a connection string available as environment variable `DATABASE_URL`.
+You can use `docker-compose` to set up default MySQL server in container:
+
+```bash
+docker-compose up -d
+```
 
 > For local development, you can create a .env file from the .env.example file and the application will read the values on startup.
 
@@ -33,7 +38,6 @@ Next, start up the server:
 
 ```bash
 yarn dev # for local development or else `yarn start` for production build.
-
 ```
 
 This will expose a GraphQL API endpoint locally at http://localhost:3000. You can easily interact with this endpoint using the graphiql interface by visiting http://localhost:3000 in your browser.
