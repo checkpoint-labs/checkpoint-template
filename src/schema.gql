@@ -1,11 +1,12 @@
 scalar Text
+scalar BigInt
 
-type Post {
+type Transfers {
   id: String!
-  author: String!
-  content: Text!
-  tag: String
-  tx_hash: String!
+  token: String!
+  from: String!
+  to: String!
+  value: BigInt!
   created_at: Int!
   created_at_block: Int!
 }

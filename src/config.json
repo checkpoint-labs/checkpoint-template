@@ -1,16 +1,10 @@
 {
   "network_node_url": "https://starknet-goerli.infura.io/v3/46a5dd9727bf48d4a132672d3f376146",
-  "sources": [
+  "start": 621153,
+  "globalEvents": [
     {
-      "contract": "0x04d10712e72b971262f5df09506bbdbdd7f729724030fa909e8c8e7ac2fd0012",
-      "start": 185778,
-      "deploy_fn": "handleDeploy",
-      "events": [
-        {
-          "name": "new_post",
-          "fn": "handleNewPost"
-        }
-      ]
+      "name": "Transfer",
+      "fn": "handleTransfer"
     }
   ]
 }
