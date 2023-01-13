@@ -6,7 +6,6 @@ import fs from 'fs';
 import Checkpoint, { LogLevel } from '@snapshot-labs/checkpoint';
 import config from './config.json';
 import * as writers from './writers';
-import checkpointBlocks from './checkpoints.json';
 
 const dir = __dirname.endsWith('dist/src') ? '../' : '';
 const schemaFile = path.join(__dirname, `${dir}../src/schema.gql`);
@@ -23,13 +22,10 @@ const checkpoint = new Checkpoint(config, writers, schema, checkpointOptions);
 
 // resets the entities already created in the database
 // ensures data is always fresh on each re-run
-checkpoint
-  .reset()
-  .then(() => checkpoint.seedCheckpoints(checkpointBlocks))
-  .then(() => {
-    // start the indexer
-    checkpoint.start();
-  });
+checkpoint.reset().then(() => {
+  // start the indexer
+  checkpoint.start();
+});
 
 const app = express();
 app.use(express.json({ limit: '4mb' }));
