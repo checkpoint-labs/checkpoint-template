@@ -4,6 +4,8 @@ WORKDIR /usr/app
 
 COPY . .
 
-RUN yarn
+RUN ["yarn", "install", "--frozen-lockfile"]
+
+CMD [ "yarn", "start" ]
 
 EXPOSE 3000
