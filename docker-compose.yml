@@ -2,6 +2,7 @@ version: '3.8'
 services:
   mysql:
     image: mysql:8.0
+    container_name: mysql
     restart: always
     command:
       --default-authentication-plugin=mysql_native_password
@@ -9,8 +10,9 @@ services:
       - SYS_NICE
     ports:
       - 3306:3306
-    env_file:
-      - .env
+    environment:
+      - MYSQL_ROOT_PASSWORD=default_password
+      - MYSQL_DATABASE=checkpoint
     volumes:
       - mysql:/var/lib/mysql
     healthcheck:
@@ -19,17 +21,18 @@ services:
       timeout: 5s
       retries: 20
 
-  node:
-    build: .
-    command: yarn dev
-    restart: always
-    ports:
-      - 3000:3000
+  app:
+    image: checkpoint-template
+    container_name: checkpoint-template
+    build:
+      context: .
+      dockerfile: Dockerfile
     depends_on:
       mysql:
         condition: service_healthy
-    env_file:
-      - .env
+    restart: always
+    ports:
+      - 3000:3000
 
 volumes:
   mysql:
