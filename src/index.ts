@@ -25,6 +25,7 @@ const checkpoint = new Checkpoint(config, writers, schema, checkpointOptions);
 // ensures data is always fresh on each re-run
 checkpoint
   .reset()
+  .then(() => checkpoint.resetMetadata())
   .then(() => checkpoint.seedCheckpoints(checkpointBlocks))
   .then(() => {
     // start the indexer

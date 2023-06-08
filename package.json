@@ -16,7 +16,7 @@
   "dependencies": {
     "@ethersproject/address": "^5.6.0",
     "@ethersproject/bignumber": "^5.6.1",
-    "@snapshot-labs/checkpoint": "^0.1.0-beta.13",
+    "@snapshot-labs/checkpoint": "^0.1.0-beta.18",
     "@snapshot-labs/sx": "^0.1.0-beta.13",
     "@types/bn.js": "^5.1.0",
     "@types/express": "^4.17.13",
@@ -25,7 +25,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
-    "starknet": "^4.13.1"
+    "starknet": "^4.22.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.25.0",
