@@ -1,5 +1,6 @@
 import { hexStrArrToStr, toAddress } from './utils';
 import type { CheckpointWriter } from '@snapshot-labs/checkpoint';
+import { Post } from '../.checkpoint/models';
 
 export async function handleDeploy() {
   // Run logic as at the time Contract was deployed.
@@ -38,16 +39,14 @@ export async function handleNewPost({ block, tx, rawEvent, mysql }: Parameters<C
   }
 
   // post object matches fields of Post type in schema.gql
-  const post = {
-    id: `${author}/${tx.transaction_hash}`,
-    author,
-    content,
-    tag,
-    tx_hash: tx.transaction_hash,
-    created_at: timestamp,
-    created_at_block: blockNumber
-  };
+  const post = new Post(`${author}/${tx.transaction_hash}`);
+  post.author = author;
+  post.content = content;
+  post.tag = tag;
+  post.tx_hash = tx.transaction_hash!,
+  post.created_at = timestamp;
+  post.created_at_block = blockNumber;
 
-  // table names are `lowercase(TypeName)s` and can be interacted with sql
-  await mysql.queryAsync('INSERT IGNORE INTO posts SET ?', [post]);
+  // Save Posts into your db
+  await post.save();
 }
