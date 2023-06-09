@@ -11,20 +11,20 @@ export async function handleDeploy() {
 //
 // See here for the original logic used to create post transactions:
 // https://gist.github.com/perfectmak/417a4dab69243c517654195edf100ef9#file-index-ts
-export async function handleNewPost({ block, tx, rawEvent, mysql }: Parameters<CheckpointWriter>[0]) {
-  if (!rawEvent) return;
+export async function handleNewPost({ block, tx, event, mysql }: Parameters<CheckpointWriter>[0]) {
+  if (!event) return;
 
-  const author = toAddress(rawEvent.data[0]);
+  const author = toAddress(event.data[0]);
   let content = '';
   let tag = '';
-  const contentLength = BigInt(rawEvent.data[1]);
-  const tagLength = BigInt(rawEvent.data[2 + Number(contentLength)]);
+  const contentLength = BigInt(event.data[1]);
+  const tagLength = BigInt(event.data[2 + Number(contentLength)]);
   const timestamp = block!.timestamp;
   const blockNumber = block!.block_number;
 
   // parse content bytes
   try {
-    content = hexStrArrToStr(rawEvent.data, 2, contentLength);
+    content = hexStrArrToStr(event.data, 2, contentLength);
   } catch (e) {
     console.error(`failed to decode content on block [${blockNumber}]: ${e}`);
     return;
@@ -32,13 +32,13 @@ export async function handleNewPost({ block, tx, rawEvent, mysql }: Parameters<C
 
   // parse tag bytes
   try {
-    tag = hexStrArrToStr(rawEvent.data, 3 + Number(contentLength), tagLength);
+    tag = hexStrArrToStr(event.data, 3 + Number(contentLength), tagLength);
   } catch (e) {
     console.error(`failed to decode tag on block [${blockNumber}]: ${e}`);
     return;
   }
 
-  // post object matches fields of Post type in schema.gql
+  // Create new Post from generated models
   const post = new Post(`${author}/${tx.transaction_hash}`);
   post.author = author;
   post.content = content;
