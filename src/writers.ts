@@ -9,7 +9,6 @@ export async function handleDeploy() {
 // This decodes the new_post events data and stores successfully
 // decoded information in the `posts` table.
 export async function handleNewPost({ block, tx, event, mysql }: Parameters<CheckpointWriter>[0]) {
-  console.log(event);
   try {  
     if (!event) return;
 
