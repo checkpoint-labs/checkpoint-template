@@ -6,23 +6,23 @@ export async function handleDeploy() {
   // Run logic as at the time Contract was deployed.
 }
 
-// This decodes the new_post events data and stores successfully
+// This decodes the new_post rawEvents data and stores successfully
 // decoded information in the `posts` table.
-export async function handleNewPost({ block, tx, event, mysql }: Parameters<CheckpointWriter>[0]) {
+export async function handleNewPost({ block, tx, rawEvent, mysql }: Parameters<CheckpointWriter>[0]) {
   try {  
-    if (!event) return;
-
-    const author = toAddress(event.data[0]);
+    console.log(rawEvent)
+    if (!rawEvent) return;
+    const author = toAddress(rawEvent.data[0]);
     let content = '';
     let tag = '';
-    const contentLength = BigInt(event.data[1]);
-    const tagLength = BigInt(event.data[2 + Number(contentLength)]);
+    const contentLength = BigInt(rawEvent.data[1]);
+    const tagLength = BigInt(rawEvent.data[2 + Number(contentLength)]);
     const timestamp = block!.timestamp;
     const blockNumber = block!.block_number;
 
     // parse content bytes
     try {
-      content = hexStrArrToStr(event.data, 2, contentLength);
+      content = hexStrArrToStr(rawEvent.data, 2, contentLength);
     } catch (e) {
       console.error(`failed to decode content on block [${blockNumber}]: ${e}`);
       return;
@@ -30,7 +30,7 @@ export async function handleNewPost({ block, tx, event, mysql }: Parameters<Chec
 
     // parse tag bytes
     try {
-      tag = hexStrArrToStr(event.data, 3 + Number(contentLength), tagLength);
+      tag = hexStrArrToStr(rawEvent.data, 3 + Number(contentLength), tagLength);
     } catch (e) {
       console.error(`failed to decode tag on block [${blockNumber}]: ${e}`);
       return;
