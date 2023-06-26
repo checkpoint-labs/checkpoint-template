@@ -10,7 +10,6 @@ export async function handleDeploy() {
 // decoded information in the `posts` table.
 export async function handleNewPost({ block, tx, rawEvent, mysql }: Parameters<CheckpointWriter>[0]) {
   try {  
-    console.log(rawEvent)
     if (!rawEvent) return;
     const author = toAddress(rawEvent.data[0]);
     let content = '';
