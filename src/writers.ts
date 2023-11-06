@@ -11,7 +11,7 @@ export async function handleDeploy() {
 // See here for the original logic used to create post transactions:
 // https://gist.github.com/perfectmak/417a4dab69243c517654195edf100ef9#file-index-ts
 export async function handleNewPost({ block, tx, event, mysql }: Parameters<CheckpointWriter>[0]) {
-  if (!event) return;
+  if (!block || !event) return;
 
   const author = toAddress(event.data[0]);
   let content = '';

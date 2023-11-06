@@ -39,8 +39,10 @@ describe('Writers', () => {
         tx,
         source,
         block,
+        blockNumber: 500,
         event,
         mysql: mockMysql,
+        pg: null as any,
         instance: null as any
       });
 
