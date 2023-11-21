@@ -1,15 +1,14 @@
 {
-  "network_node_url": "https://starknet-sepolia.infura.io/v3/c82b1cf516984b599108487a1b6481c4",
-  "optimistic_indexing": false,
+  "network_node_url": "https://sepolia.infura.io/v3/46a5dd9727bf48d4a132672d3f376146",
   "sources": [
     {
-      "contract": "0x03aa7630a4f9c5108bf3cd1910c7d45404cba865fc0fc0756bf9eedc073a98a9",
-      "start": 65137,
-      "abi": "Poster",
+      "contract": "0x4b4f7f64be813ccc66aefc3bfce2baa01188631c",
+      "start": 3962130,
+      "abi": "ProxyFactory",
       "events": [
         {
-          "name": "NewPost",
-          "fn": "handleNewPost"
+          "name": "ProxyDeployed(address,address)",
+          "fn": "handleProxyDeployed"
         }
       ]
     }

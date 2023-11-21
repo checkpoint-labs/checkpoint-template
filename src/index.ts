@@ -3,29 +3,30 @@ import express from 'express';
 import cors from 'cors';
 import path from 'path';
 import fs from 'fs';
-import Checkpoint, { LogLevel } from '@snapshot-labs/checkpoint';
+import Checkpoint, { LogLevel, evm } from '@snapshot-labs/checkpoint';
 import config from './config.json';
 import * as writers from './writers';
-import checkpointBlocks from './checkpoints.json';
-import Poster from './abis/Poster.json';
+import ProxyFactory from './abis/ProxyFactory.json';
 
 const dir = __dirname.endsWith('dist/src') ? '../' : '';
 const schemaFile = path.join(__dirname, `${dir}../src/schema.gql`);
 const schema = fs.readFileSync(schemaFile, 'utf8');
 
-const checkpoint = new Checkpoint(config, writers, schema, {
+const indexer = new evm.EvmIndexer(writers);
+
+// Initialize checkpoint
+const checkpoint = new Checkpoint(config, indexer, schema, {
   logLevel: LogLevel.Info,
-  prettifyLogs: true,
-  fetchInterval: 15000,
+  resetOnConfigChange: true,
   abis: {
-    Poster
-  }
+    ProxyFactory
+  },
+  prettifyLogs: true // uncomment in local dev
 });
 
 async function run() {
   await checkpoint.reset();
   await checkpoint.resetMetadata();
-  await checkpoint.seedCheckpoints(checkpointBlocks);
   await checkpoint.start();
 }
 
