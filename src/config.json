@@ -1,14 +1,14 @@
 {
-  "network_node_url": "https://sepolia.infura.io/v3/46a5dd9727bf48d4a132672d3f376146",
+  "network_node_url": "https://rpc.brovider.xyz/5",
   "sources": [
     {
-      "contract": "0x4b4f7f64be813ccc66aefc3bfce2baa01188631c",
-      "start": 3962130,
-      "abi": "ProxyFactory",
+      "contract": "0x000000000000cd17345801aa8147b8D3950260FF",
+      "start": 6102403,
+      "abi": "Poster",
       "events": [
         {
-          "name": "ProxyDeployed(address,address)",
-          "fn": "handleProxyDeployed"
+          "name": "NewPost(address,string,string)",
+          "fn": "handleNewPost"
         }
       ]
     }

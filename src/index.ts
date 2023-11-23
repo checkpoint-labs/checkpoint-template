@@ -7,6 +7,7 @@ import Checkpoint, { LogLevel, evm } from '@snapshot-labs/checkpoint';
 import config from './config.json';
 import * as writers from './writers';
 import ProxyFactory from './abis/ProxyFactory.json';
+import Poster from './abis/Poster.json';
 
 const dir = __dirname.endsWith('dist/src') ? '../' : '';
 const schemaFile = path.join(__dirname, `${dir}../src/schema.gql`);
@@ -19,7 +20,8 @@ const checkpoint = new Checkpoint(config, indexer, schema, {
   logLevel: LogLevel.Info,
   resetOnConfigChange: true,
   abis: {
-    ProxyFactory
+    ProxyFactory,
+    Poster
   }
   // prettifyLogs: true, // uncomment in local dev
 });
