@@ -1,0 +1,52 @@
+[
+  {
+    "data": [
+      {
+        "name": "address",
+        "type": "felt"
+      },
+      {
+        "name": "content_len",
+        "type": "felt"
+      },
+      {
+        "name": "content",
+        "type": "felt*"
+      },
+      {
+        "name": "tag_len",
+        "type": "felt"
+      },
+      {
+        "name": "tag",
+        "type": "felt*"
+      }
+    ],
+    "keys": [],
+    "name": "new_post",
+    "type": "event"
+  },
+  {
+    "name": "post",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "content_len",
+        "type": "felt"
+      },
+      {
+        "name": "content",
+        "type": "felt*"
+      },
+      {
+        "name": "tag_len",
+        "type": "felt"
+      },
+      {
+        "name": "tag",
+        "type": "felt*"
+      }
+    ],
+    "outputs": []
+  }
+]

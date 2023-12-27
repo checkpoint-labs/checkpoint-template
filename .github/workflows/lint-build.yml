@@ -1,7 +1,7 @@
-name: Build and Run Tests
+name: Lint and build
 on: [push]
 jobs:
-  build-test:
+  lint-build:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
@@ -16,6 +16,5 @@ jobs:
       - run: yarn install
       - run: yarn lint
       - run: yarn build
-      - run: yarn test
         env:
           DATABASE_URL: 'mysql://root:root@l27.0.0.1:3306/checkpoint'

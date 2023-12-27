@@ -1,16 +1,5 @@
-import { getAddress } from '@ethersproject/address';
-import { BigNumber } from '@ethersproject/bignumber';
-import { shortStringArrToStr } from '@snapshot-labs/sx/dist/utils/strings';
+import { shortString } from 'starknet';
 
-export const toAddress = bn => {
-  try {
-    return getAddress(BigNumber.from(bn).toHexString());
-  } catch (e) {
-    return bn;
-  }
-};
-
-export const hexStrArrToStr = (data, start: number, length: number | bigint): string => {
-  const dataSlice = data.slice(start, start + Number(length));
-  return shortStringArrToStr(dataSlice.map(m => BigInt(m)));
-};
+export function longStringToText(array: string[]): string {
+  return array.reduce((acc, slice) => acc + shortString.decodeShortString(slice), '');
+}
