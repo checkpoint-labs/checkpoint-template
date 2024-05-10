@@ -154,10 +154,10 @@
   resolved "https://registry.yarnpkg.com/@rometools/cli-win32-x64/-/cli-win32-x64-12.1.3.tgz#b4f53491d2ca8f1234b3613b7cc73418ad8d76bb"
   integrity sha512-yHSKYidqJMV9nADqg78GYA+cZ0hS1twANAjiFibQdXj9aGzD+s/IzIFEIi/U/OBLvWYg/SCw0QVozi2vTlKFDQ==
 
-"@snapshot-labs/checkpoint@^0.1.0-beta.26":
-  version "0.1.0-beta.26"
-  resolved "https://registry.yarnpkg.com/@snapshot-labs/checkpoint/-/checkpoint-0.1.0-beta.26.tgz#e4a5f21222768c1aa7ae5cf3b9dbb4267dc562d8"
-  integrity sha512-Y4IkP+eIZDuWe/JcjIhM2oOZMWxziRjodaY1edYbpOuQQOb4eppNCq9kZJUw7jUkm91LEvMEVLrIzxDiFX7l9Q==
+"@snapshot-labs/checkpoint@^0.1.0-beta.34":
+  version "0.1.0-beta.34"
+  resolved "https://registry.yarnpkg.com/@snapshot-labs/checkpoint/-/checkpoint-0.1.0-beta.34.tgz#ce7ccb988ff008a2ca827848aff852ee9a4904b9"
+  integrity sha512-EZ0enCmL44fc8gLl+Kxf8CEjeEtXi/wWzrdSvGDY4aS+PHV/TTkeg46vTXkkwmIOuPg6AgF2CRoqY8xa4Wm1Hw==
   dependencies:
     "@graphql-tools/schema" "^8.5.1"
     bluebird "^3.7.2"
