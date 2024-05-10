@@ -16,6 +16,7 @@ const schema = fs.readFileSync(schemaFile, 'utf8');
 const checkpoint = new Checkpoint(config, writers, schema, {
   logLevel: LogLevel.Info,
   prettifyLogs: true,
+  fetchInterval: 15000,
   abis: {
     Poster
   }

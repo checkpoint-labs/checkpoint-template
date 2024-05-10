@@ -1,14 +1,14 @@
 {
-  "network_node_url": "https://starknet-goerli.infura.io/v3/c82b1cf516984b599108487a1b6481c4",
-  "optimistic_indexing": true,
+  "network_node_url": "https://starknet-sepolia.infura.io/v3/c82b1cf516984b599108487a1b6481c4",
+  "optimistic_indexing": false,
   "sources": [
     {
-      "contract": "0x04d10712e72b971262f5df09506bbdbdd7f729724030fa909e8c8e7ac2fd0012",
-      "start": 185778,
+      "contract": "0x03aa7630a4f9c5108bf3cd1910c7d45404cba865fc0fc0756bf9eedc073a98a9",
+      "start": 65137,
       "abi": "Poster",
       "events": [
         {
-          "name": "new_post",
+          "name": "NewPost",
           "fn": "handleNewPost"
         }
       ]

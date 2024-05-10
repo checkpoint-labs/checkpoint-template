@@ -1,52 +1,63 @@
 [
   {
-    "data": [
-      {
-        "name": "address",
-        "type": "felt"
-      },
-      {
-        "name": "content_len",
-        "type": "felt"
-      },
-      {
-        "name": "content",
-        "type": "felt*"
-      },
-      {
-        "name": "tag_len",
-        "type": "felt"
-      },
-      {
-        "name": "tag",
-        "type": "felt*"
-      }
-    ],
-    "keys": [],
-    "name": "new_post",
-    "type": "event"
+    "name": "Poster",
+    "type": "impl",
+    "interface_name": "starknet_poster::poster::IPoster"
   },
   {
-    "name": "post",
-    "type": "function",
-    "inputs": [
+    "name": "starknet_poster::poster::IPoster",
+    "type": "interface",
+    "items": [
       {
-        "name": "content_len",
-        "type": "felt"
-      },
-      {
-        "name": "content",
-        "type": "felt*"
-      },
-      {
-        "name": "tag_len",
-        "type": "felt"
-      },
-      {
-        "name": "tag",
-        "type": "felt*"
+        "name": "post",
+        "type": "function",
+        "inputs": [
+          {
+            "name": "content",
+            "type": "core::array::Array::<core::felt252>"
+          },
+          {
+            "name": "tag",
+            "type": "core::array::Array::<core::felt252>"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
       }
-    ],
-    "outputs": []
+    ]
+  },
+  {
+    "kind": "struct",
+    "name": "starknet_poster::poster::Poster::NewPost",
+    "type": "event",
+    "members": [
+      {
+        "kind": "key",
+        "name": "address",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "kind": "data",
+        "name": "content",
+        "type": "core::array::Array::<core::felt252>"
+      },
+      {
+        "kind": "data",
+        "name": "tag",
+        "type": "core::array::Array::<core::felt252>"
+      }
+    ]
+  },
+  {
+    "kind": "enum",
+    "name": "starknet_poster::poster::Poster::Event",
+    "type": "event",
+    "variants": [
+      {
+        "kind": "nested",
+        "name": "NewPost",
+        "type": "starknet_poster::poster::Poster::NewPost"
+      }
+    ]
   }
 ]
