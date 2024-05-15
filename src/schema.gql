@@ -1,10 +1,9 @@
 scalar Text
 
-type Post {
+type Proxy {
   id: String!
-  author: String!
-  content: Text!
-  tag: String
+  implementation: String!
+  deployer: String!
   tx_hash: String!
   created_at: Int!
   created_at_block: Int!
