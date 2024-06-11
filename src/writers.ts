@@ -1,9 +1,9 @@
 import { validateAndParseAddress } from 'starknet';
-import { CheckpointWriter } from '@snapshot-labs/checkpoint';
+import { starknet } from '@snapshot-labs/checkpoint';
 import { Post } from '../.checkpoint/models';
 import { longStringToText } from './utils';
 
-export const handleNewPost: CheckpointWriter = async ({ block, tx, rawEvent, event }) => {
+export const handleNewPost: starknet.Writer = async ({ block, tx, rawEvent, event }) => {
   if (!block || !event || !rawEvent) return;
 
   const author = validateAndParseAddress(rawEvent.from_address);
