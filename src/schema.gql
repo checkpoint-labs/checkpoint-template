@@ -7,4 +7,21 @@ type Proxy {
   tx_hash: String!
   created_at: Int!
   created_at_block: Int!
+  proxyTwo: ProxyTwo
+  proxies: [ProxySroxy]! @derivedFrom(field: "f")
+}
+
+type DeployerStat {
+  id: String!
+  deploy_count: Int!
+}
+
+type ProxySroxy {
+  id: String!
+  f: String!
+}
+
+type ProxyTwo {
+  id: String!
+  f: String!
 }
