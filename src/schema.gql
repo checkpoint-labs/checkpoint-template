@@ -2,10 +2,30 @@ scalar Text
 
 type Post {
   id: String!
-  author: String!
+  author: User!
   content: Text!
-  tag: String
+  tags: [Tag]!
   tx_hash: String!
   created_at: Int!
   created_at_block: Int!
+}
+
+type Tag {
+  id: String!
+  created_at: Int!
+  created_at_block: Int!
+  posts: [Post]! @derivedFrom(field: "tag")
+}
+
+type User {
+  id: String!
+  info: UserInfo!
+  created_at: Int!
+  created_at_block: Int!
+  posts: [Post]! @derivedFrom(field: "author")
+}
+
+type UserInfo {
+  id: String!
+  post_count: Int!
 }
