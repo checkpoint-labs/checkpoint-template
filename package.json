@@ -16,7 +16,7 @@
   },
   "prettier": "@snapshot-labs/prettier-config",
   "dependencies": {
-    "@snapshot-labs/checkpoint": "^0.1.0-beta.36",
+    "@snapshot-labs/checkpoint": "^0.1.0-beta.46",
     "@types/node": "^18.11.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
