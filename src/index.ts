@@ -4,29 +4,32 @@ import cors from 'cors';
 import path from 'path';
 import fs from 'fs';
 import Checkpoint, { starknet, LogLevel } from '@snapshot-labs/checkpoint';
-import config from './config.json';
-import * as writers from './writers';
+import { createConfig } from './config';
+import { createStarknetWriters } from './writers';
 import checkpointBlocks from './checkpoints.json';
-import Poster from './abis/Poster.json';
 
 const dir = __dirname.endsWith('dist/src') ? '../' : '';
 const schemaFile = path.join(__dirname, `${dir}../src/schema.gql`);
 const schema = fs.readFileSync(schemaFile, 'utf8');
 
-const indexer = new starknet.StarknetIndexer(writers);
-const checkpoint = new Checkpoint(config, indexer, schema, {
+const mainnetConfig = createConfig('mainnet');
+const sepoliaConfig = createConfig('sepolia');
+
+const mainnetIndexer = new starknet.StarknetIndexer(createStarknetWriters('mainnet'));
+const sepoliaIndexer = new starknet.StarknetIndexer(createStarknetWriters('sepolia'));
+
+const checkpoint = new Checkpoint(schema, {
   logLevel: LogLevel.Info,
-  prettifyLogs: true,
-  fetchInterval: 15000,
-  abis: {
-    Poster
-  }
+  prettifyLogs: true
 });
 
+checkpoint.addIndexer('mainnet', mainnetConfig, mainnetIndexer);
+checkpoint.addIndexer('sepolia', sepoliaConfig, sepoliaIndexer);
+
 async function run() {
-  await checkpoint.reset();
   await checkpoint.resetMetadata();
-  await checkpoint.seedCheckpoints(checkpointBlocks);
+  await checkpoint.reset();
+  await checkpoint.seedCheckpoints('mainnet', checkpointBlocks);
   await checkpoint.start();
 }
 
