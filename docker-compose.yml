@@ -1,17 +1,16 @@
 version: '3.8'
+
 services:
-  mysql:
-    image: mysql:8.0
-    command: --default-authentication-plugin=mysql_native_password
-    cap_add:
-      - SYS_NICE
+  postgres:
+    image: postgres:15
     ports:
-      - '3306:3306'
+      - '5432:5432'
     environment:
-      - MYSQL_ROOT_PASSWORD=default_password
-      - MYSQL_DATABASE=checkpoint
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=default_password
+      - POSTGRES_DB=checkpoint
     volumes:
-      - mysql:/var/lib/mysql
+      - postgres_data:/var/lib/postgresql/data
 volumes:
-  mysql:
+  postgres_data:
     driver: local
