@@ -34,12 +34,6 @@ docker-compose up -d
 
 > For local development, you can create a .env file from the .env.example file and the application will read the values on startup.
 
-Then, build:
-
-```bash
-yarn build
-```
-
 Next, start up the server:
 
 ```bash

@@ -9,7 +9,8 @@
     "prebuild": "yarn codegen",
     "build": "tsc",
     "dev": "nodemon src/index.ts",
-    "start": "node dist/src/index.js"
+    "start": "node dist/src/index.js",
+    "predev": "yarn codegen"
   },
   "eslintConfig": {
     "extends": "@snapshot-labs"
