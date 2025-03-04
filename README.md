@@ -25,8 +25,8 @@ After cloning this project, run the following command to install dependencies:
 yarn # or 'npm install'
 ```
 
-Next, you'll need a MySQL server running and a connection string available as environment variable `DATABASE_URL`.
-You can use `docker-compose` to set up default MySQL server in container:
+Next, you'll need a Postgres server running and a connection string available as environment variable `DATABASE_URL`.
+You can use `docker-compose` to set up default Postgres server in container:
 
 ```bash
 docker-compose up -d
